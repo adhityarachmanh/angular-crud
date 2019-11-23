@@ -1,0 +1,36 @@
+<h1>Welcome!</h1>
+<div class="play-container">
+    <div class="book-form">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="">Title:</label>
+                <input type="text" name="title" [(ngModel)]="book.title">
+            </div>
+            <div class="form-group">
+                <label for="">Genre:</label>
+                <input type="text" name="genre" [(ngModel)]="book.genre">
+            </div>
+            <div class="form-group">
+                <label for="">Author:</label>
+                <select name="authorID" [(ngModel)]="book.authorID">
+                    <option disabled>Select Author..</option>
+                    <option [value]="item._id" *ngFor="let item of authors">{{item.name}}</option>
+                </select>
+            </div>
+
+            <button *ngIf="!update" class="add" type="submit">Add To List</button>
+            <button *ngIf="update" class="update" type="submit">Update Book</button>
+            <button *ngIf="update" class="cancel" (click)="cancelUpdate()">Cancel</button>
+        </form>
+    </div>
+    <div class="book-list">
+        <div class="book-list__item" *ngFor="let item of books">
+            <h3 class="book__title">{{item.title}}</h3>
+            <p>{{item.genre}}</p>
+            <p>{{getAuthors(item.authorID)}}</p>
+
+            <button class="delete" (click)="onDelete(item._id)">Delete</button>
+            <button (click)="onUpdate(item)" class="update">Update</button>
+        </div>
+    </div>
+</div>

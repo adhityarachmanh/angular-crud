@@ -1,0 +1,125 @@
+@import '../../global.scss';
+
+span{
+    padding: .3em .8em;
+    background: color(primary);
+    border-radius: 5px;
+    color: white;
+    @include transition-ease;
+    &:hover{
+        background: lighten(color(primary), 10%);
+        cursor: pointer;
+    }
+}
+.play-container{
+ padding: 3em;   
+ border: 1px solid lightgray;
+ margin-bottom: 2em;
+   
+}
+.book-form{
+    margin-bottom: 1rem;
+    .form-group{
+        width: 100%;
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        input,select{
+            padding: 0.5rem 1rem;
+            border: 1px solid color(primary);
+            border-radius: 5px;
+        }
+       
+    }
+    button{
+        padding: 0.5rem 2rem;   
+        border-radius: 5px;
+        border: 0;
+        outline: 0;
+        box-shadow:1px 2px 2px #888888;
+        background: color(success);
+    
+        color: white;
+        margin: 0 auto;
+        @include transition-ease;
+        &:hover{
+            background: dark(color(success),10%);
+            cursor: pointer;
+        }
+     
+    }
+    .add{
+       margin-right: 1rem;   
+    }
+    .update{
+        background: color(primary);
+        margin-right: 1rem;   
+    }
+    .cancel{
+        background: darken(red, 10%);
+    }
+}
+ .book-list{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        &__item{
+        
+            text-transform: capitalize;
+            border: 1px solid lightgray;
+            padding: 1rem;
+            .delete{
+                background: darken(red, 10%);
+                &:hover{
+                    background: darken(red, 5%);
+                    cursor: pointer;
+                }
+            }
+            .update{
+                margin-left: 0.5rem;
+                background: darken(color(primary), 10%);
+                &:hover{
+                    background: darken(color(primary), 5%);
+                    cursor: pointer;
+                }
+            }
+            button{
+                color: white;
+                outline: 0;
+                border: 0;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                @include transition-ease;
+              
+            }
+        }
+}
+.book{
+    &__title{
+        color: color(primary);
+    }
+}
+//untuk responsive
+    @include media-md{
+        .book-list{
+            grid-template-columns: repeat(2,1fr);
+        }
+       
+    }
+    @include media-lg{
+        .book-list{
+        grid-template-columns: repeat(3,1fr);
+        }
+        .book-form .form-group{
+            width: 50%;
+        }
+    }   
+    @include media-xl{
+        .book-list{
+        grid-template-columns: repeat(4,1fr);
+        }
+        .book-form .form-group{
+            width: 300px;
+        }
+    }
+    
